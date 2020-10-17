@@ -1,12 +1,12 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Entrance from './components/Entrance';
-declare let module: any
+declare let module: any;
 
-ReactDOM.render(<Entrance />,
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-document.getElementById('root'));
+ReactDOM.render(<Entrance />, document.getElementById('root'));
 
 if (module.hot) {
-  module.hot.accept();
+	module.hot.accept();
 }

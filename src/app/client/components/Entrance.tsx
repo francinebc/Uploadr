@@ -1,13 +1,15 @@
-import * as React from 'react'
-import { Fragment } from 'react'
-import './Entrance.css'
+import React from 'react';
+import { Container, Jumbotron } from 'react-bootstrap';
+import './Entrance.css';
 
-const Entrance = () => {
-  return (
-      <Fragment>
-        <p className='hello'>hello</p>
-      </Fragment>
-  )
-}
+const Entrance: React.FC = () => {
+	return (
+		<Container className='main-container'>
+			<Jumbotron>
+				<p className='hello'>hello</p>
+			</Jumbotron>
+		</Container>
+	);
+};
 
-export default Entrance
+export default Entrance;
