@@ -12,7 +12,7 @@
 		"noUnusedLocals": true,
 		"strict": true,
 		"strictNullChecks": true,
-		"outDir": "build",
+		"outDir": "./build/",
 		"lib": [
 			"es6",
 			"es7",

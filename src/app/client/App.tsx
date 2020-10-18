@@ -8,5 +8,5 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 ReactDOM.render(<Entrance />, document.getElementById('root'));
 
 if (module.hot) {
-	module.hot.accept();
+  module.hot.accept();
 }
