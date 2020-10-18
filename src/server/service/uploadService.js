@@ -16,7 +16,8 @@ const uploadFile = (file) => new Promise((resolve, reject) => {
       resolve(publicUrl);
     })
     .on('error', (err) => {
-      reject('Unable to upload doc, something went wrong: ' + err);
+      console.error(err); // could return error to user here, but I don't think it's good to expose client
+      reject('Unable to upload doc, something went wrong.');
     })
     .end(buffer);
 });
