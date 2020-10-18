@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { useState } from 'react';
-import { Alert, Card } from 'react-bootstrap';
+import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
 import Picker from '../Picker';
 import Upload from '../Upload';
 import './styles.css';
@@ -9,33 +9,44 @@ const Entrance: React.FC = () => {
   const [file, setFile] = useState<File>();
   const [allowUpload, setAllowUpload] = useState<boolean>(false);
   const [err, setErr] = useState<string>('');
-  const [success, setSuccess] = useState<string>('');
-  const ALERT_TIMEOUT = 5000;
+  const [success, setSuccess] = useState<JSX.Element | null>();
+  const ALERT_TIMEOUT = 5000000;
 
-  function handleSetAlert(msg: string, setter: (msg: string) => void): void {
-    setter(msg);
-    setInterval(() => setter(''), ALERT_TIMEOUT);
+  function handleSuccessAlert(elm: JSX.Element): void {
+    setSuccess(elm);
+    setInterval(() => setSuccess(null), ALERT_TIMEOUT);
+  }
+
+  function handleErrAlert(err: string): void {
+    setErr(err);
+    setInterval(() => setErr(''), ALERT_TIMEOUT);
   }
 
   return (
-    <Card className='main-container'>
-      <Card.Header>Uploadr</Card.Header>
-      <Card.Body>
-        <Card.Title>Please choose a file then click Upload</Card.Title>
-        {!_.isEmpty(err) && <Alert variant='danger'>{err}</Alert>}
-        {!_.isEmpty(success) && <Alert variant='success'>{success}</Alert>}
-        <Picker 
-          setAllowUpload={setAllowUpload}
-          file={file}
-          setFile={setFile}
-        />
-        <Upload 
-          file={file} 
-          allowUpload={allowUpload} 
-          handleSuccessAlert={(msg: string) => handleSetAlert(msg, setSuccess)} 
-          handleErrorAlert={(msg: string) => handleSetAlert(msg, setErr)}/>
-      </Card.Body>
-    </Card>
+    <Container fluid className='my-auto'>
+      <Row className='justify-content-md-center'>
+        <Col md={6}>
+          <Card className='my-auto'>
+            <Card.Header>Uploadr</Card.Header>
+            <Card.Body>
+              <Card.Title>Please choose a file then click Upload</Card.Title>
+              {!_.isEmpty(err) && <Alert variant='danger'>{err}</Alert>}
+              {!_.isEmpty(success) && <Alert variant='success'>{success}</Alert>}
+              <Picker 
+                setAllowUpload={setAllowUpload}
+                file={file}
+                setFile={setFile}
+              />
+              <Upload 
+                file={file} 
+                allowUpload={allowUpload} 
+                handleSuccessAlert={handleSuccessAlert} 
+                handleErrorAlert={(err: string) => handleErrAlert(err)}/>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

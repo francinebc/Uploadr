@@ -21,8 +21,8 @@ router.post('/upload', multerMid.single('upload-file'), function (req, res) {
   }
 
   uploadFile(file)
-    .then(() => {
-      res.send({'success': 'file uploades'});
+    .then((url) => {
+      res.send({url});
     })
     .catch(() => {
       res.status(500).send('Failed to upload file');

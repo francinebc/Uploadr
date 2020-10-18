@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { useState } from 'react';
 import { Button, Spinner } from 'react-bootstrap';
-import { uploadFile } from '../../api/upload';
+import { uploadFile, UploadResponse } from '../../api/upload';
 
 const Upload: React.FC<Props> = ({file, allowUpload, handleSuccessAlert, handleErrorAlert}: Props) => {
   const [uploading, setUploading] = useState<boolean>(false);
@@ -14,8 +14,8 @@ const Upload: React.FC<Props> = ({file, allowUpload, handleSuccessAlert, handleE
 
     setUploading(true);
     uploadFile(file.name, file)
-      .then(() => {
-        handleSuccessAlert( `${file.name} uploaded successfully!`);
+      .then(({url}: UploadResponse) => {
+        handleSuccessAlert(<span><a href={url}>{file.name}</a> uploaded successfully!</span>);
       })
       .catch((err: any) => {
         handleErrorAlert(err.response.text);
@@ -40,8 +40,8 @@ const Upload: React.FC<Props> = ({file, allowUpload, handleSuccessAlert, handleE
 type Props = {
     file?: File,
     allowUpload: boolean,
-    handleSuccessAlert: (msg: string) => void,
-    handleErrorAlert: (msg: string) => void
+    handleSuccessAlert: (elm: JSX.Element) => void,
+    handleErrorAlert: (err: string) => void
 }
 
 export default Upload;
