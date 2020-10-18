@@ -16,7 +16,7 @@ While there is a client-side library to upload to a Google bucket (https://githu
 
 ## Code choices
 
-Most of the libraries I have used are because I am familiar with them and use them frequently. For this project I used React-Bootstrap because it's light, simple and clean. I have used Material-UI extensively but it has a little more boilerplate which isn't necessary for a project of this size.
+I picked most of these libraries because I am familiar with them and use them frequently. For this project I used React-Bootstrap because it's light, simple and clean. I have used Material-UI extensively but it has a little more boilerplate which isn't necessary for a project of this size.
 
 ## TODO
 
