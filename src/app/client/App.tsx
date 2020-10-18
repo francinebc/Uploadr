@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Entrance from './components/Entrance';
+import Entrance from './components/Body';
 declare let module: any;
 
 import 'bootstrap/dist/css/bootstrap.min.css';
