@@ -6,6 +6,7 @@ import './styles.css';
 
 const Upload: React.FC<Props> = ({file, allowUpload, handleSuccessAlert, handleErrorAlert}: Props) => {
   const [uploading, setUploading] = useState<boolean>(false);
+  const disabled = !allowUpload || uploading;
 
   function handleUpload(): void {
     if (_.isNil(file)) {
@@ -27,7 +28,7 @@ const Upload: React.FC<Props> = ({file, allowUpload, handleSuccessAlert, handleE
   }
 
   return (
-    <Button disabled={!allowUpload || uploading} onClick={handleUpload} className='upload'>
+    <Button disabled={disabled} onClick={handleUpload} className='upload' variant={disabled ? 'secondary' : 'primary'}>
       {uploading &&
           <><Spinner animation="border" role="status" size="sm">
             <span className="sr-only">Loading...</span>

@@ -10,7 +10,7 @@ const Entrance: React.FC = () => {
   const [allowUpload, setAllowUpload] = useState<boolean>(false);
   const [err, setErr] = useState<string>('');
   const [success, setSuccess] = useState<JSX.Element | null>();
-  const ALERT_TIMEOUT = 5000;
+  const ALERT_TIMEOUT = 10000;
 
   function handleSuccessAlert(elm: JSX.Element): void {
     setSuccess(elm);
