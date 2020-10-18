@@ -9,8 +9,7 @@ const multerMid = multer({
   storage: multer.memoryStorage(),
   limits: {
     fileSize: 5 * 1024 * 1024,
-  },
-  dest: 'tmp/uploads'
+  }
 });
 
 router.post('/upload', multerMid.single('upload-file'), function (req, res) {
@@ -30,7 +29,11 @@ router.post('/upload', multerMid.single('upload-file'), function (req, res) {
       console.log('success');
       res.send({'success': 'file uploades'});
     })
-    .catch(console.error);
+    .catch((err) => {
+      console.error(err);
+      res.status(500)
+        .send({'error': 'Failed to upload file'});
+    });
 
 });
 
