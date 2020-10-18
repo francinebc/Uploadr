@@ -10,14 +10,14 @@ const Entrance: React.FC = () => {
   const [allowUpload, setAllowUpload] = useState<boolean>(false);
   const [err, setErr] = useState<string>('');
   const [success, setSuccess] = useState<JSX.Element | null>();
-  const ALERT_TIMEOUT = 5000000;
+  const ALERT_TIMEOUT = 5000;
 
   function handleSuccessAlert(elm: JSX.Element): void {
     setSuccess(elm);
     setInterval(() => setSuccess(null), ALERT_TIMEOUT);
   }
 
-  function handleErrAlert(err: string): void {
+  function handleErrorAlert(err: string): void {
     setErr(err);
     setInterval(() => setErr(''), ALERT_TIMEOUT);
   }
@@ -32,16 +32,16 @@ const Entrance: React.FC = () => {
               <Card.Title>Please choose a file then click Upload</Card.Title>
               {!_.isEmpty(err) && <Alert variant='danger'>{err}</Alert>}
               {!_.isEmpty(success) && <Alert variant='success'>{success}</Alert>}
+              <Upload 
+                file={file} 
+                allowUpload={allowUpload} 
+                handleSuccessAlert={handleSuccessAlert} 
+                handleErrorAlert={handleErrorAlert}/>
               <Picker 
                 setAllowUpload={setAllowUpload}
                 file={file}
                 setFile={setFile}
               />
-              <Upload 
-                file={file} 
-                allowUpload={allowUpload} 
-                handleSuccessAlert={handleSuccessAlert} 
-                handleErrorAlert={(err: string) => handleErrAlert(err)}/>
             </Card.Body>
           </Card>
         </Col>
