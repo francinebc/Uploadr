@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React, { useState } from 'react';
 import { Button, Spinner } from 'react-bootstrap';
 import { uploadFile, UploadResponse } from '../../api/upload';
+import './styles.css';
 
 const Upload: React.FC<Props> = ({file, allowUpload, handleSuccessAlert, handleErrorAlert}: Props) => {
   const [uploading, setUploading] = useState<boolean>(false);
@@ -26,11 +27,11 @@ const Upload: React.FC<Props> = ({file, allowUpload, handleSuccessAlert, handleE
   }
 
   return (
-    <Button disabled={!allowUpload || uploading} onClick={handleUpload}>
+    <Button disabled={!allowUpload || uploading} onClick={handleUpload} className='upload'>
       {uploading &&
-          <Spinner animation="border" role="status">
+          <><Spinner animation="border" role="status" size="sm">
             <span className="sr-only">Loading...</span>
-          </Spinner>
+          </Spinner>{' '}</>
       }
       Upload
     </Button>

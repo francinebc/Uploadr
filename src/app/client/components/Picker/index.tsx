@@ -2,6 +2,7 @@ import bsCustomFileInput from 'bs-custom-file-input';
 import _ from 'lodash';
 import React, { useEffect } from 'react';
 import { Form } from 'react-bootstrap';
+import './styles.css';
 
 const Picker: React.FC<Props> = ({setAllowUpload, file, setFile}: Props) => {
   useEffect(() => {
@@ -14,7 +15,7 @@ const Picker: React.FC<Props> = ({setAllowUpload, file, setFile}: Props) => {
   }
 
   return (
-    <Form>
+    <Form className='picker'>
       <Form.File
         type='file'
         id='file'

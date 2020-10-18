@@ -23,25 +23,27 @@ const Entrance: React.FC = () => {
   }
 
   return (
-    <Container fluid className='my-auto'>
+    <Container fluid>
       <Row className='justify-content-md-center'>
         <Col md={6}>
-          <Card className='my-auto'>
-            <Card.Header>Uploadr</Card.Header>
+          <Card>
+            <Card.Header>Uploadr <span className='copyright'>©</span></Card.Header>
             <Card.Body>
               <Card.Title>Please choose a file then click Upload</Card.Title>
               {!_.isEmpty(err) && <Alert variant='danger'>{err}</Alert>}
               {!_.isEmpty(success) && <Alert variant='success'>{success}</Alert>}
-              <Upload 
-                file={file} 
-                allowUpload={allowUpload} 
-                handleSuccessAlert={handleSuccessAlert} 
-                handleErrorAlert={handleErrorAlert}/>
-              <Picker 
-                setAllowUpload={setAllowUpload}
-                file={file}
-                setFile={setFile}
-              />
+              <div className='upload-row'>
+                <Upload 
+                  file={file} 
+                  allowUpload={allowUpload} 
+                  handleSuccessAlert={handleSuccessAlert} 
+                  handleErrorAlert={handleErrorAlert}/>
+                <Picker 
+                  setAllowUpload={setAllowUpload}
+                  file={file}
+                  setFile={setFile}
+                />
+              </div>
             </Card.Body>
           </Card>
         </Col>

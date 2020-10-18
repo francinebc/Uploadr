@@ -1,0 +1,11 @@
+.picker {
+    flex-grow: 2;
+}
+
+.picker input {
+    cursor: pointer;
+}
+
+.picker label {
+    border-radius: 0px 3.5px 3.5px 0px !important;
+}
