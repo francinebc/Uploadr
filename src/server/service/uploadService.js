@@ -5,10 +5,8 @@ const bucket = storage.bucket('test20201018');
 const uploadFile = (file) => new Promise((resolve, reject) => {
   const { originalname, buffer } = file;
 
-  const blob = bucket.file(originalname); //.replace(/ /g, '_'));
-  const blobStream = blob.createWriteStream(); //{resumable: false});
-
-  console.log(`https://storage.googleapis.com/${bucket.name}/${blob.name}`);
+  const blob = bucket.file(originalname);
+  const blobStream = blob.createWriteStream();
 
   blobStream
     .on('finish', () => {

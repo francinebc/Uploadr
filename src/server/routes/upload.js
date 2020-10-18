@@ -13,28 +13,20 @@ const multerMid = multer({
 });
 
 router.post('/upload', multerMid.single('upload-file'), function (req, res) {
-  console.log(req.file);
-  console.log('something posted');
-
-
   const {file} = req;
 
   if (_.isNil(file)) {
     res.status(400)
-      .send({'error': 'no file provided'});
+      .send('No file provided');
   }
 
   uploadFile(file)
     .then(() => {
-      console.log('success');
       res.send({'success': 'file uploades'});
     })
-    .catch((err) => {
-      console.error(err);
-      res.status(500)
-        .send({'error': 'Failed to upload file'});
+    .catch(() => {
+      res.status(500).send('Failed to upload file');
     });
-
 });
 
 module.exports = router;
