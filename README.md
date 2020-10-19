@@ -20,5 +20,5 @@ I picked most of these libraries because I am familiar with them and use them fr
 
 ## TODO
 
-- Add tests
+- Test injection attacks etc.
 - Specify bucket name & key file at run time

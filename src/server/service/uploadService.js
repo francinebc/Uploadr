@@ -1,6 +1,6 @@
 const storage = require('../config/');
 const {format} = require('util');
-const bucket = storage.bucket('test20201018');
+const bucket = storage.bucket('tmp-until-20201030');
 
 const uploadFile = (file) => new Promise((resolve, reject) => {
   const { originalname, buffer } = file;

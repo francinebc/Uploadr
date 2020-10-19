@@ -14,16 +14,12 @@ const Upload: React.FC<Props> = ({file, allowUpload, handleSuccessAlert, handleE
       return;
     }
 
-    console.log('gonna upload nowwwww');
-
     setUploading(true);
     uploadFile(file.name, file)
       .then(({url}: UploadResponse) => {
-        console.log('succccesssssss');
         handleSuccessAlert(<span><a href={url}>{file.name}</a> uploaded successfully!</span>);
       })
       .catch((err: any) => {
-        console.log('failllllllll');
         handleErrorAlert(err.response.text);
       })
       .finally(() => {
