@@ -3,32 +3,11 @@ import { fireEvent, render, waitFor } from '@testing-library/react';
 import Body from 'app/client/components/Body';
 import React from 'react';
 import _ from 'lodash';
+import { getMockFile } from '../utils';
 
 const mockUploadApi = jest.requireActual('app/client/api/upload');
 
-function getMockFile() {
-  const name = 'mock.txt';
-  const size = 1024;
-  const mimeType ='plain/txt';
-
-  function range(count: number) {
-    let output = '';
-    for (let i = 0; i < count; i++) {
-      output += 'a';
-    }
-    return output;
-  }
-
-  const blob: any = new Blob([range(size)], { type: mimeType });
-  blob.lastModifiedDate = new Date();
-  blob.name = name;
-
-  return blob;
-}
-
 describe('<Body />', () => {
-
-
   it('renders', () => {
     // given
     const { getByText } = render(<Body />);
