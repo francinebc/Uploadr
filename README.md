@@ -22,3 +22,5 @@ I picked most of these libraries because I am familiar with them and use them fr
 
 - Test injection attacks etc.
 - Specify bucket name & key file at run time
+- Add drag and drop area for files
+- Tests for server (not added as the front end is the focus of this project)
