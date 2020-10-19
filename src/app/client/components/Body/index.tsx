@@ -5,7 +5,7 @@ import Picker from '../Picker';
 import Upload from '../Upload';
 import './styles.css';
 
-const Entrance: React.FC = () => {
+const Body: React.FC = () => {
   const [file, setFile] = useState<File>();
   const [allowUpload, setAllowUpload] = useState<boolean>(false);
   const [err, setErr] = useState<string>('');
@@ -52,4 +52,4 @@ const Entrance: React.FC = () => {
   );
 };
 
-export default Entrance;
+export default Body;
