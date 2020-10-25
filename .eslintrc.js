@@ -34,5 +34,13 @@ module.exports = {
       'error',
       'always'
     ]
-  }
+  },
+  'overrides': [
+    {
+      'files': ['*.js'],
+      'rules': {
+        '@typescript-eslint/no-var-requires': 'off'
+      }
+    }
+  ]
 };

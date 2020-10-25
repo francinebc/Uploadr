@@ -6,7 +6,9 @@ const uploadFile = (file) => new Promise((resolve, reject) => {
   const { originalname, buffer } = file;
 
   const blob = bucket.file(originalname);
-  const blobStream = blob.createWriteStream();
+  const blobStream = blob.createWriteStream({
+    public: true
+  });
 
   blobStream
     .on('finish', () => {
